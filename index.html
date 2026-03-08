@@ -112,6 +112,12 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(168, 218, 220, 0.3);
             animation: fadeInUp 1s ease-out 0.6s both;
+            transition: all 0.3s ease;
+        }
+
+        .hero .location:hover {
+            background: rgba(241, 250, 238, 0.2);
+            transform: translateY(-2px);
         }
 
         .scroll-indicator {
@@ -127,6 +133,46 @@
             0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
             40% { transform: translateX(-50%) translateY(-10px); }
             60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .lang-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background: white;
+            border: 2px solid var(--dark);
+            border-radius: 50px;
+            padding: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--dark);
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: var(--accent);
+        }
+
+        [lang="de"] .en-only,
+        [lang="en"] .de-only {
+            display: none !important;
         }
 
         .section {
@@ -362,15 +408,31 @@
             .section {
                 padding: 3rem 1.5rem;
             }
+
+            .lang-toggle {
+                top: 1rem;
+                right: 1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="lang-toggle">
+        <button class="lang-btn active" onclick="switchLang('de')">DE</button>
+        <button class="lang-btn" onclick="switchLang('en')">EN</button>
+    </div>
+
     <div class="hero">
         <div class="hero-content">
-            <h1>Das Herz des Zooparks schlägt nicht mehr</h1>
-            <div class="subtitle">Eine Sportanlage verfällt. Eine Gemeinschaft kämpft zurück.</div>
-            <div class="location">📍 Zoopark Düsseltal, Düsseldorf</div>
+            <h1 class="de-only">Das Herz des Zooparks schlägt nicht mehr</h1>
+            <h1 class="en-only">The Heart of the Zoo Park Has Stopped Beating</h1>
+            
+            <div class="subtitle de-only">Eine Sportanlage verfällt. Eine Gemeinschaft kämpft zurück.</div>
+            <div class="subtitle en-only">A sports facility deteriorates. A community fights back.</div>
+            
+            <a href="https://www.google.com/maps/place/Zoo+Park+D%C3%BCsseldorf/@51.2419351,6.8037856,17.5z/data=!4m6!3m5!1s0x47b8c9828accbbbb:0xc1e1d96b9d135fb2!8m2!3d51.2419911!4d6.8057514!16s%2Fg%2F121vf3xw?entry=ttu&g_ep=EgoyMDI2MDMwNC4xIKXMDSoASAFQAw%3D%3D" target="_blank" class="location" style="text-decoration: none;">
+                📍 Zoopark Düsseltal, Düsseldorf
+            </a>
         </div>
         <div class="scroll-indicator">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -380,143 +442,258 @@
     </div>
 
     <section class="section letter-section">
-        <h2 class="section-title">Der offene Brief</h2>
+        <h2 class="section-title de-only">Der offene Brief</h2>
+        <h2 class="section-title en-only">The Open Letter</h2>
         
         <div class="letter-box">
-            <h3>Das Herz des Zooparks schlägt nicht mehr!</h3>
+            <h3 class="de-only">Das Herz des Zooparks schlägt nicht mehr!</h3>
+            <h3 class="en-only">The Heart of the Zoo Park No Longer Beats!</h3>
             
-            <p>Warum?</p>
-            
-            <p>Der beliebteste Ort in Düsseldorf für Fußball und Basketball wurde Anfang Mai plötzlich komplett versiegelt, um den Bodenbelag zu reparieren – dabei war dieser nur vor den Torlinien abgenutzt.</p>
-            
-            <p>Zwei ganze Monate vergingen, ohne dass irgendwelche Arbeiten begonnen wurden. Und wie jemand völlig richtig schrieb, war dies sehr gefährlich, da die Kinder unbedingt spielen wollten und deshalb über die hohen Zäune kletterten, um hineinzukommen.</p>
-            
-            <p>Schließlich wurde der Bodenbelag im Juli von einem Arbeiter entfernt, was nur zwei bis drei Tage dauerte.</p>
-            
-            <p>Danach musste man bis Anfang August warten, bis der Platz schließlich nur mit Erde aufgefüllt wurde!</p>
-            
-            <p><span class="highlight">Ich frage mich: Haben die Verantwortlichen für dieses Fiasko jemals gesehen, wie auf Erde Basketball gespielt wird?</span></p>
-            
-            <p>Wie fühlen sie sich wohl, wenn nur noch wenige Kinder diesen Platz zum Spielen nutzen?</p>
-            
-            <p>Sie haben doch gesehen, wie perfekte Böden in anderen Anlagen verlegt werden, zum Beispiel auf dem CVJM Düsseldorf e.V. Sportgelände (gegenüber dem Media Markt).</p>
-            
-            <p>Gab es dafür also einen Grund? Es wäre erschreckend, wenn dem so wäre.</p>
-            
-            <p>Auf jeden Fall finde ich es absolut traurig, dass dieser Sport- und Freizeitbereich für so viele Kinder nun zu einer Wüste geworden ist.</p>
-            
-            <p><strong>Bin ich der Einzige, der so denkt?</strong></p>
-            
-            <p style="text-align: center; font-size: 1.3rem; margin-top: 2rem; color: var(--primary);"><strong>Lassen Sie das Herz des Zooparks wieder so laut schlagen wie früher!</strong></p>
+            <div class="de-only">
+                <p>Warum?</p>
+                
+                <p>Der beliebteste Ort in Düsseldorf für Fußball und Basketball wurde Anfang Mai plötzlich komplett versiegelt, um den Bodenbelag zu reparieren – dabei war dieser nur vor den Torlinien abgenutzt.</p>
+                
+                <p>Zwei ganze Monate vergingen, ohne dass irgendwelche Arbeiten begonnen wurden. Und wie jemand völlig richtig schrieb, war dies sehr gefährlich, da die Kinder unbedingt spielen wollten und deshalb über die hohen Zäune kletterten, um hineinzukommen.</p>
+                
+                <p>Schließlich wurde der Bodenbelag im Juli von einem Arbeiter entfernt, was nur zwei bis drei Tage dauerte.</p>
+                
+                <p>Danach musste man bis Anfang August warten, bis der Platz schließlich nur mit Erde aufgefüllt wurde!</p>
+                
+                <p><span class="highlight">Ich frage mich: Haben die Verantwortlichen für dieses Fiasko jemals gesehen, wie auf Erde Basketball gespielt wird?</span></p>
+                
+                <p>Wie fühlen sie sich wohl, wenn nur noch wenige Kinder diesen Platz zum Spielen nutzen?</p>
+                
+                <p>Sie haben doch gesehen, wie perfekte Böden in anderen Anlagen verlegt werden, zum Beispiel auf dem CVJM Düsseldorf e.V. Sportgelände (gegenüber dem Media Markt).</p>
+                
+                <p>Gab es dafür also einen Grund? Es wäre erschreckend, wenn dem so wäre.</p>
+                
+                <p>Auf jeden Fall finde ich es absolut traurig, dass dieser Sport- und Freizeitbereich für so viele Kinder nun zu einer Wüste geworden ist.</p>
+                
+                <p><strong>Bin ich der Einzige, der so denkt?</strong></p>
+                
+                <p style="text-align: center; font-size: 1.3rem; margin-top: 2rem; color: var(--primary);"><strong>Lassen Sie das Herz des Zooparks wieder so laut schlagen wie früher!</strong></p>
+            </div>
+
+            <div class="en-only">
+                <p>Why?</p>
+                
+                <p>Düsseldorf's most popular spot for football and basketball was suddenly sealed off completely at the beginning of May to repair the surface – even though it was only worn out in front of the goal lines.</p>
+                
+                <p>Two whole months passed without any work beginning. And as someone quite rightly wrote, this was very dangerous, as the children desperately wanted to play and therefore climbed over the high fences to get in.</p>
+                
+                <p>Finally, in July, a worker removed the flooring, which only took two to three days.</p>
+                
+                <p>After that, we had to wait until the beginning of August for the court to be filled with nothing but dirt!</p>
+                
+                <p><span class="highlight">I wonder: Have those responsible for this fiasco ever seen basketball being played on dirt?</span></p>
+                
+                <p>How do they feel when only a few children use this court to play now?</p>
+                
+                <p>They've seen perfect surfaces laid at other facilities, for example at the YMCA Düsseldorf sports grounds (opposite Media Markt).</p>
+                
+                <p>So was there a reason for this? It would be shocking if that were the case.</p>
+                
+                <p>In any case, I find it absolutely sad that this sports and recreational area has now become a wasteland for so many children.</p>
+                
+                <p><strong>Am I the only one who thinks this way?</strong></p>
+                
+                <p style="text-align: center; font-size: 1.3rem; margin-top: 2rem; color: var(--primary);"><strong>Let the heart of the Zoo Park beat as loudly as before!</strong></p>
+            </div>
         </div>
     </section>
 
     <section class="section timeline-section">
-        <h2 class="section-title" style="color: var(--light);">Der Zeitverlauf</h2>
+        <h2 class="section-title de-only" style="color: var(--light);">Der Zeitverlauf</h2>
+        <h2 class="section-title en-only" style="color: var(--light);">The Timeline</h2>
         
         <div class="timeline">
             <div class="timeline-item">
-                <h4>Mai 2024</h4>
-                <p>Die Sportanlage wird plötzlich komplett versiegelt. Der Bodenbelag war nur vor den Torlinien abgenutzt – eine vollständige Sperrung erscheint unverhältnismäßig.</p>
+                <h4 class="de-only">Mai 2024</h4>
+                <h4 class="en-only">May 2024</h4>
+                <p class="de-only">Die Sportanlage wird plötzlich komplett versiegelt. Der Bodenbelag war nur vor den Torlinien abgenutzt – eine vollständige Sperrung erscheint unverhältnismäßig.</p>
+                <p class="en-only">The sports facility is suddenly completely sealed off. The surface was only worn out in front of the goal lines – a complete closure seems disproportionate.</p>
             </div>
             
             <div class="timeline-item">
-                <h4>Mai - Juli 2024</h4>
-                <p>Zwei Monate vergehen ohne jegliche Bauarbeiten. Kinder klettern aus Verzweiflung über die Zäune. Ein gefährlicher Zustand.</p>
+                <h4 class="de-only">Mai - Juli 2024</h4>
+                <h4 class="en-only">May - July 2024</h4>
+                <p class="de-only">Zwei Monate vergehen ohne jegliche Bauarbeiten. Kinder klettern aus Verzweiflung über die Zäune. Ein gefährlicher Zustand.</p>
+                <p class="en-only">Two months pass without any construction work. Children climb over the fences in desperation. A dangerous situation.</p>
             </div>
             
             <div class="timeline-item">
-                <h4>Juli 2024</h4>
-                <p>Endlich! Ein Arbeiter entfernt den Bodenbelag – die Arbeit dauert nur 2-3 Tage. Warum hat es so lange gedauert?</p>
+                <h4 class="de-only">Juli 2024</h4>
+                <h4 class="en-only">July 2024</h4>
+                <p class="de-only">Endlich! Ein Arbeiter entfernt den Bodenbelag – die Arbeit dauert nur 2-3 Tage. Warum hat es so lange gedauert?</p>
+                <p class="en-only">Finally! A worker removes the flooring – the work takes only 2-3 days. Why did it take so long?</p>
             </div>
             
             <div class="timeline-item">
-                <h4>August 2024</h4>
-                <p>Der Platz wird mit Erde aufgefüllt. Erde. Für Basketball und Fußball. Eine völlig unzureichende Lösung.</p>
+                <h4 class="de-only">August 2024</h4>
+                <h4 class="en-only">August 2024</h4>
+                <p class="de-only">Der Platz wird mit Erde aufgefüllt. Erde. Für Basketball und Fußball. Eine völlig unzureichende Lösung.</p>
+                <p class="en-only">The court is filled with dirt. Dirt. For basketball and football. A completely inadequate solution.</p>
             </div>
             
             <div class="timeline-item">
-                <h4>März 2026</h4>
-                <p>Über ein halbes Jahr später: Keine Verbesserung. Die Anlage bleibt unbrauchbar. Die Nutzung ist drastisch zurückgegangen.</p>
+                <h4 class="de-only">März 2026</h4>
+                <h4 class="en-only">March 2026</h4>
+                <p class="de-only">Über ein halbes Jahr später: Keine Verbesserung. Die Anlage bleibt unbrauchbar. Die Nutzung ist drastisch zurückgegangen.</p>
+                <p class="en-only">Over half a year later: No improvement. The facility remains unusable. Usage has drastically declined.</p>
             </div>
         </div>
 
         <div class="stats-grid" style="margin-top: 4rem;">
             <div class="stat-card">
                 <span class="stat-number">10+</span>
-                <div class="stat-label">Monate ohne funktionierende Anlage</div>
+                <div class="stat-label de-only">Monate ohne funktionierende Anlage</div>
+                <div class="stat-label en-only">Months without a functioning facility</div>
             </div>
             <div class="stat-card">
                 <span class="stat-number">2-3</span>
-                <div class="stat-label">Tage für Bodenentfernung</div>
+                <div class="stat-label de-only">Tage für Bodenentfernung</div>
+                <div class="stat-label en-only">Days for floor removal</div>
             </div>
             <div class="stat-card">
                 <span class="stat-number">0</span>
-                <div class="stat-label">Transparente Kommunikation</div>
+                <div class="stat-label de-only">Transparente Kommunikation</div>
+                <div class="stat-label en-only">Transparent communication</div>
             </div>
         </div>
     </section>
 
     <section class="section action-section">
-        <h2 class="section-title">Was wir fordern</h2>
+        <h2 class="section-title de-only">Was wir fordern</h2>
+        <h2 class="section-title en-only">What We Demand</h2>
         
         <div class="cta-text">
-            <p style="font-size: 1.5rem; margin-bottom: 2rem;"><strong>Transparenz. Qualität. Gerechtigkeit.</strong></p>
+            <p class="de-only" style="font-size: 1.5rem; margin-bottom: 2rem;"><strong>Transparenz. Qualität. Gerechtigkeit.</strong></p>
+            <p class="en-only" style="font-size: 1.5rem; margin-bottom: 2rem;"><strong>Transparency. Quality. Justice.</strong></p>
             
-            <p>Der Zoopark war ein Herzstück der Düsseldorfer Gemeinschaft – ein Ort, an dem Kinder Sport treiben, Freundschaften schließen und aktiv bleiben konnten.</p>
+            <p class="de-only">Der Zoopark war ein Herzstück der Düsseldorfer Gemeinschaft – ein Ort, an dem Kinder Sport treiben, Freundschaften schließen und aktiv bleiben konnten.</p>
+            <p class="en-only">The Zoo Park was a centerpiece of the Düsseldorf community – a place where children could play sports, make friends, and stay active.</p>
             
-            <p style="margin-top: 2rem;">Wir fordern die Verantwortlichen auf:</p>
+            <p class="de-only" style="margin-top: 2rem;">Wir fordern die Verantwortlichen auf:</p>
+            <p class="en-only" style="margin-top: 2rem;">We call on those responsible to:</p>
             
             <div style="text-align: left; max-width: 700px; margin: 2rem auto; font-size: 1.2rem;">
-                <p>✓ Die Sportanlage mit einem hochwertigen, professionellen Belag auszustatten</p>
-                <p>✓ Transparent über Pläne, Zeitrahmen und Budgets zu kommunizieren</p>
-                <p>✓ Den Standard anderer Düsseldorfer Anlagen zu erreichen</p>
-                <p>✓ Der Gemeinschaft ihren Sport- und Freizeitplatz zurückzugeben</p>
+                <p class="de-only">✓ Die Sportanlage mit einem hochwertigen, professionellen Belag auszustatten</p>
+                <p class="en-only">✓ Equip the sports facility with a high-quality, professional surface</p>
+                
+                <p class="de-only">✓ Transparent über Pläne, Zeitrahmen und Budgets zu kommunizieren</p>
+                <p class="en-only">✓ Communicate transparently about plans, timelines, and budgets</p>
+                
+                <p class="de-only">✓ Den Standard anderer Düsseldorfer Anlagen zu erreichen</p>
+                <p class="en-only">✓ Meet the standard of other Düsseldorf facilities</p>
+                
+                <p class="de-only">✓ Der Gemeinschaft ihren Sport- und Freizeitplatz zurückzugeben</p>
+                <p class="en-only">✓ Return the sports and recreational area to the community</p>
             </div>
         </div>
     </section>
 
     <section class="section" style="background: white; text-align: center;">
-        <h2 class="section-title">Kontakt & Unterstützung</h2>
+        <h2 class="section-title de-only">Kontakt & Unterstützung</h2>
+        <h2 class="section-title en-only">Contact & Support</h2>
         
         <div style="max-width: 700px; margin: 0 auto;">
-            <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+            <p class="de-only" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
                 Bei Fragen, Anliegen oder Unterstützungsangeboten erreichen Sie uns gerne unter:
+            </p>
+            <p class="en-only" style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                For questions, concerns, or offers of support, please contact us at:
             </p>
             
             <div style="background: var(--accent); padding: 1.5rem; border-radius: 8px; display: inline-block;">
-                <a href="zoopark_initiative@hotmail.com" style="font-family: 'Archivo Black', sans-serif; font-size: 1.3rem; color: var(--dark); text-decoration: none;">
-                    📧 zoopark_initiative@hotmail.com</a>
+                <a href="mailto:zoopark_initiative@hotmail.com" style="font-family: 'Archivo Black', sans-serif; font-size: 1.3rem; color: var(--dark); text-decoration: none;">
+                    📧 zoopark_initiative@hotmail.com
+                </a>
             </div>
         </div>
     </section>
 
     <section class="legal-section">
         <div class="legal-box">
-            <h3>Rechtliche Hinweise & Haftungsausschluss</h3>
+            <h3 class="de-only">Rechtliche Hinweise & Haftungsausschluss</h3>
+            <h3 class="en-only">Legal Notice & Disclaimer</h3>
             
-            <p><strong>Verantwortlicher für den Inhalt dieser Website:</strong><br>
-            Diese Website wurde als private Initiative erstellt, um auf die Situation der Sportanlage im Zoopark Düsseldorf aufmerksam zu machen. Sie dient ausschließlich der Information und dem zivilgesellschaftlichen Dialog.</p>
-            
-            <p><strong>Haftungsausschluss:</strong><br>
-            Die auf dieser Website dargestellten Informationen und Meinungen entsprechen der persönlichen Wahrnehmung und Einschätzung des Verfassers. Es wird kein Anspruch auf Vollständigkeit oder absolute Richtigkeit erhoben. Die Website stellt keine Rechtsberatung dar und ist nicht mit offiziellen Stellen verbunden.</p>
-            
-            <p><strong>Meinungsfreiheit:</strong><br>
-            Diese Website macht von dem in Artikel 5 des Grundgesetzes garantierten Recht auf freie Meinungsäußerung Gebrauch. Die hier geäußerte Kritik erfolgt in konstruktiver Absicht und zum Zweck der öffentlichen Meinungsbildung.</p>
-            
-            <p><strong>Datenschutz:</strong><br>
-            Diese Website erhebt keine personenbezogenen Daten. Es werden keine Cookies verwendet und keine Nutzerdaten gespeichert.</p>
-            
-            <p><strong>Urheberrecht:</strong><br>
-            Alle Inhalte dieser Website sind urheberrechtlich geschützt. Eine Weiterverbreitung zu nicht-kommerziellen Zwecken im Sinne der öffentlichen Aufklärung ist ausdrücklich erwünscht.</p>
-            
-            <p><strong>Kontakt zu Behörden:</strong><br>
-            Für offizielle Anfragen zur Sportanlage wenden Sie sich bitte direkt an:<br>
-            Sportamt Düsseldorf<br>
-            </p>
+            <div class="de-only">
+                <p><strong>Verantwortlicher für den Inhalt dieser Website:</strong><br>
+                Diese Website wurde als private Initiative erstellt, um auf die Situation der Sportanlage im Zoopark Düsseldorf aufmerksam zu machen. Sie dient ausschließlich der Information und dem zivilgesellschaftlichen Dialog.</p>
+                
+                <p><strong>Haftungsausschluss:</strong><br>
+                Die auf dieser Website dargestellten Informationen und Meinungen entsprechen der persönlichen Wahrnehmung und Einschätzung des Verfassers. Es wird kein Anspruch auf Vollständigkeit oder absolute Richtigkeit erhoben. Die Website stellt keine Rechtsberatung dar und ist nicht mit offiziellen Stellen verbunden.</p>
+                
+                <p><strong>Meinungsfreiheit:</strong><br>
+                Diese Website macht von dem in Artikel 5 des Grundgesetzes garantierten Recht auf freie Meinungsäußerung Gebrauch. Die hier geäußerte Kritik erfolgt in konstruktiver Absicht und zum Zweck der öffentlichen Meinungsbildung.</p>
+                
+                <p><strong>Datenschutz:</strong><br>
+                Diese Website erhebt keine personenbezogenen Daten. Es werden keine Cookies verwendet und keine Nutzerdaten gespeichert.</p>
+                
+                <p><strong>Urheberrecht:</strong><br>
+                Alle Inhalte dieser Website sind urheberrechtlich geschützt. Eine Weiterverbreitung zu nicht-kommerziellen Zwecken im Sinne der öffentlichen Aufklärung ist ausdrücklich erwünscht.</p>
+                
+                <p><strong>Kontakt zu Behörden:</strong><br>
+                Für offizielle Anfragen zur Sportanlage wenden Sie sich bitte direkt an:<br>
+                Sportamt Düsseldorf</p>
+            </div>
+
+            <div class="en-only">
+                <p><strong>Responsible for the content of this website:</strong><br>
+                This website was created as a private initiative to raise awareness about the situation of the sports facility in Zoo Park Düsseldorf. It serves exclusively for information and civil society dialogue.</p>
+                
+                <p><strong>Disclaimer:</strong><br>
+                The information and opinions presented on this website correspond to the personal perception and assessment of the author. No claim is made to completeness or absolute accuracy. The website does not constitute legal advice and is not affiliated with official authorities.</p>
+                
+                <p><strong>Freedom of Expression:</strong><br>
+                This website exercises the right to freedom of expression guaranteed by Article 5 of the German Basic Law. The criticism expressed here is made with constructive intent and for the purpose of public opinion formation.</p>
+                
+                <p><strong>Privacy:</strong><br>
+                This website does not collect personal data. No cookies are used and no user data is stored.</p>
+                
+                <p><strong>Copyright:</strong><br>
+                All content on this website is protected by copyright. Distribution for non-commercial purposes in the interest of public education is expressly encouraged.</p>
+                
+                <p><strong>Contact with Authorities:</strong><br>
+                For official inquiries about the sports facility, please contact:<br>
+                Sportamt Düsseldorf</p>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>Eine Initiative besorgter Bürgerinnen und Bürger</p>
+        <p class="de-only">Eine Initiative besorgter Bürgerinnen und Bürger</p>
+        <p class="en-only">An initiative of concerned citizens</p>
     </footer>
+
+    <script>
+        function switchLang(lang) {
+            document.documentElement.lang = lang;
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Save preference
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Load saved language preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'de';
+            if (savedLang === 'en') {
+                document.documentElement.lang = 'en';
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.textContent === 'EN') {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
